@@ -1,0 +1,42 @@
+@import "https://use.fontawesome.com/releases/v6.5.1/css/all.css";
+#nav-bar {
+    font-size: 1.3em;
+    width: 97%;
+    height: 5em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: burlywood ;
+    /* TODO: think about the position of the nav bar */
+}
+
+
+#nav-bar li {
+    list-style: none;
+}
+
+#nav-bar li a {
+    cursor: pointer;
+    border: 2px solid white;
+    padding: 0.2em;
+    border-radius: 0.3em;
+    text-decoration: none;
+    color: white;
+}
+
+
+#nav-bar li a:hover {
+    transition: 0.3s ease-in-out;
+    color: black;
+}
+
+.fa-solid.fa-book {
+    font-size: 2em;
+    color: white;
+    text-align: left;
+}
+
+.fa-solid.fa-book:hover {
+    color: black;
+    transition: 0.3s ease-in-out;
+}
