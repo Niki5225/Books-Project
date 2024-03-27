@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "batisteo.vscode-django",
+        "bigonesystems.django",
+        "maxchamps.django-commands",
+        "bibhasdn.django-snippets",
+        "bibhasdn.django-html",
+        "junstyle.vscode-django-support",
+        "shamanu4.django-intellisense"
+    ]
+}

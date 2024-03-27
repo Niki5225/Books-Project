@@ -6,6 +6,7 @@ import { HomeComponent } from './core/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthorsComponent } from './core/authors/authors.component';
 import { BooksComponent } from './core/books/books.component';
+import { UserComponent } from './core/user/user.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -13,9 +14,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'authors', component: AuthorsComponent},
   {path: 'books', component: BooksComponent},
+  {path: 'user/detail/:id', component: UserComponent},
   {path: '**', redirectTo: 'error-found'},
-  
-
 ];
 
 @NgModule({

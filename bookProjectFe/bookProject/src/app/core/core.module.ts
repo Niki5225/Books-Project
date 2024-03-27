@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { BooksComponent } from './books/books.component';
 import { AuthorsComponent } from './authors/authors.component';
+import { UserComponent } from './user/user.component';
 
 
 
@@ -14,7 +15,8 @@ import { AuthorsComponent } from './authors/authors.component';
     HomeComponent,
     ErrorComponent,
     BooksComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    UserComponent,
   ],
   imports: [
     CommonModule,
