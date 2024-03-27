@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 
 UserModel = get_user_model()
 
-class Book:
+class Book(models.Model):
     nameOfTheBook = models.CharField(
         max_length=50,
         validators=[
@@ -15,6 +15,6 @@ class Book:
         blank=False,
     )
     
-    users = models.ManyToManyField(UserModel)
+    users = models.ManyToManyField(UserModel, related_name='user_books')
     
     author = models.ForeignKey('author.Author', on_delete=models.CASCADE)

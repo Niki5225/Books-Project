@@ -10,6 +10,7 @@ class AppUser(AbstractUser):
         ],
         null= False,
         blank=False,
+        unique=True
     )
     
     email = models.EmailField(
@@ -26,7 +27,6 @@ class AppUser(AbstractUser):
         null=False,
         blank=False,
     )
-    
     books = models.ForeignKey('book.Book', on_delete=models.CASCADE)
     
     read_books = models.ManyToManyField('book.Book', related_name='read_books')

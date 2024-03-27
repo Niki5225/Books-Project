@@ -1,8 +1,9 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
-# Create your models here.
+from book.models import Book
 
-class Author:
+
+class Author(models.Model):
     authorName = models.CharField(
         max_length=50,
         validators=[
@@ -12,4 +13,4 @@ class Author:
         blank=False,
     )
     
-    books = models.ManyToManyField('book.Book')
+    books = models.ManyToManyField('book.Book', related_name='author_books')
