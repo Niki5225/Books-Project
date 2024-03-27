@@ -6,6 +6,8 @@ import { ErrorComponent } from './error/error.component';
 import { BooksComponent } from './books/books.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { UserComponent } from './user/user.component';
+import { GlobalLoaderComponent } from './global-loader/global-loader.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -17,11 +19,13 @@ import { UserComponent } from './user/user.component';
     BooksComponent,
     AuthorsComponent,
     UserComponent,
+    GlobalLoaderComponent,
   ],
   imports: [
     CommonModule,
+    SharedModule,
   ],
-  exports: [NavComponent, HomeComponent, ErrorComponent, BooksComponent, AuthorsComponent]
+  exports: [NavComponent, HomeComponent, ErrorComponent, BooksComponent, AuthorsComponent, GlobalLoaderComponent]
 })
 export class CoreModule { 
   

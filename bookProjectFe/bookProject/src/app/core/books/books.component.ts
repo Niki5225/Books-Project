@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class BooksComponent {
 
+  isLoading: boolean = false;
+
+  fetchBooks() {
+    this.isLoading = true;
+    // fetching books
+    this.isLoading = false
+    
+  }
 }
