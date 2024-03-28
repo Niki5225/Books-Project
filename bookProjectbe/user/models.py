@@ -27,9 +27,6 @@ class AppUser(AbstractUser):
         null=False,
         blank=False,
     )
-    books = models.ForeignKey('book.Book', on_delete=models.CASCADE)
     
-    read_books = models.ManyToManyField('book.Book', related_name='read_books')
-    
-    want_to_read = models.ManyToManyField('book.Book', related_name='want_to_read')
+    booksUser = []
     

@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
-from book.models import Book
 
 
 class Author(models.Model):
@@ -13,4 +12,11 @@ class Author(models.Model):
         blank=False,
     )
     
-    books = models.ManyToManyField('book.Book', related_name='author_books')
+    img = models.URLField(
+        null = False,
+        blank = False,
+    )
+    
+    def __str__(self):
+        return self.authorName
+    
