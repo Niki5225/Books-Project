@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-user-actions',
@@ -7,9 +8,8 @@ import { Component } from '@angular/core';
 })
 export class UserActionsComponent {
 
-  getUsers(): void {
-    fetch('http://127.0.0.1:8000/users/all-users')
-    .then(res => res.json())
-    .then(result => console.log(result))
-  }
+  // constructor(private userService: UserServiceService){}
+  // getUsersFunc(): void {
+  //   this.userService.getUsers().subscribe(users => {console.log(users)})
+  // }
 }

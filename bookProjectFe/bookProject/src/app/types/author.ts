@@ -1,4 +1,6 @@
-interface Author {
+import {Book} from './book'
+
+export interface Author {
     authorName: string,
-    books: Book[]
+    img: string
 }

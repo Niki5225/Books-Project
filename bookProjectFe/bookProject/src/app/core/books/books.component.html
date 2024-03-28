@@ -1,3 +1,10 @@
 <div *ngIf="isLoading">
-    <app-global-loader/>
+    <app-global-loader />
+</div>
+
+<div *ngIf="!isLoading">
+    <div *ngFor="let book of books">
+        {{book.data.nameOfTheBook}} - {{book.data.author}} 
+        <img src="{{book.data.img}}" alt="bookImg - {{book.data.author}} "/>
+    </div>
 </div>
