@@ -1,1 +1,11 @@
-<p>authors works!</p>
+<div *ngIf="!globalLoader.isHidden">
+    <app-global-loader />
+</div>
+<div *ngIf="globalLoader.isHidden" id="cards">
+    <div *ngFor="let author of authors">
+        <div (click)="navToAuthorBooks(author.authorName)" id="authorCard">
+            <img src="{{author.img}}"/>
+            <span>{{author.authorName}}</span>
+        </div>
+    </div>
+</div>

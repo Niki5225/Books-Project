@@ -2,9 +2,12 @@
     <app-global-loader />
 </div>
 
-<div *ngIf="!isLoading">
+<div *ngIf="!isLoading" id="cards">
     <div *ngFor="let book of books">
-        {{book.data.nameOfTheBook}} - {{book.data.author}} 
-        <img src="{{book.data.img}}" alt="bookImg - {{book.data.author}} "/>
+        <div id="book-card">
+            <img src="{{book.data.img}}" alt="{{book.data.nameOfTheBook}}img" />
+            <span>{{book.data.nameOfTheBook}} - {{book.data.author}}</span>
+        </div>
     </div>
 </div>
+

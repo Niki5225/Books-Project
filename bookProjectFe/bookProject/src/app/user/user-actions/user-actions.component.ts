@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserServiceService } from 'src/app/services/user-service.service';
+import { UserServiceService } from 'src/app/services/user-services/user-service.service';
 
 @Component({
   selector: 'app-user-actions',
