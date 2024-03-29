@@ -16,6 +16,8 @@ def parseJSON(books):
         bookObj = {'nameOfTheBook': book.nameOfTheBook,
                    'img': book.img,
                    'author': book.author.authorName,
-                   'user': book.user.username}
+                   'user': book.user.username if book.user != None else ''}
         bookInfo[book.pk] = (bookObj)
     return bookInfo
+
+# TODO: Probably you can make util func that returns the whole user for some reason?

@@ -28,5 +28,7 @@ class AppUser(AbstractUser):
         blank=False,
     )
     
-    booksUser = []
+    wantToRead = []
+    
+    readBooks = []
     
