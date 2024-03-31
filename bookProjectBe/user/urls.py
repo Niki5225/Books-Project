@@ -4,5 +4,5 @@ from django.urls import path
 urlpatterns = [
     path('', index_view),
     path('send-email/', send_email_func),
-    path('all-users/', get_all_users)
+    # path('all-users/', get_all_users),
 ]
