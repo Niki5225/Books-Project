@@ -12,4 +12,7 @@ export class UserActionsComponent {
   // getUsersFunc(): void {
   //   this.userService.getUsers().subscribe(users => {console.log(users)})
   // }
+
+  constructor() { }
+  
 }

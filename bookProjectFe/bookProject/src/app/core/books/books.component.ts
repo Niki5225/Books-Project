@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetBooksService } from 'src/app/services/books-services/get-books.service';
+import { HelperFunctionsService } from 'src/app/shared/helper-functions.service';
 import { Book } from 'src/app/types/book';
 
 @Component({
@@ -11,32 +12,24 @@ export class BooksComponent implements OnInit {
   isLoading: boolean = false;
   books: Book[] = [];
 
-  constructor(private bookService: GetBooksService) { }
+  constructor(private bookService: GetBooksService, private helperFuncs: HelperFunctionsService) { }
 
   ngOnInit(): void {
     this.fetchBooks();
   }
 
-  fetchBooks() {
+  private fetchBooks() {
     this.isLoading = true;
     this.bookService.getBooks().subscribe(
-      (data: any) => { // Specify the type of data
-        this.books = this.fillTheBooks(data.books);
+      (data: any) => {
+        this.books = this.helperFuncs.fillTheBooks(data.books);
+        console.log(this.books);
+        
       },
       (error: string) => {
         console.error('Error fetching books:', error);
       }
     );
     this.isLoading = false;
-  }
-
-  private fillTheBooks(bookObj: any): Book[] {
-    let books: Book[]  = [];
-    for (const key in bookObj) {
-        let book: Book = {pk: key, data: bookObj[key]}
-        books.push(book);
-    }
-
-    return books;
   }
 }

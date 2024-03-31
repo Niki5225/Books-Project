@@ -5,7 +5,6 @@ import { FooterComponent } from './footer/footer.component';
 import { SelectedAuthorComponent } from './selected-author/selected-author.component';
 
 
-
 @NgModule({
   declarations: [
     LoaderComponent,
@@ -15,6 +14,6 @@ import { SelectedAuthorComponent } from './selected-author/selected-author.compo
   imports: [
     CommonModule,
   ],
-  exports: [LoaderComponent, FooterComponent, SelectedAuthorComponent]
+  exports: [LoaderComponent, FooterComponent, SelectedAuthorComponent, ]
 })
 export class SharedModule { }

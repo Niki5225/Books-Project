@@ -10,6 +10,6 @@ export class GetBooksService {
   constructor(private http: HttpClient) { }
 
   getBooks(): Observable<any> {
-    return this.http.get<any>(this.API)
+    return this.http.get<any>(this.API);
   }
 }

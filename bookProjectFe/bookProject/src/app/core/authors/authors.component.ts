@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { GetAuthorBooksService } from 'src/app/services/author-services/get-author-books.service';
 import { GetAuthorsService } from 'src/app/services/author-services/get-authors.service';
 import { GlobalLoaderService } from 'src/app/services/global-loader/global-loader.service';
 import { Author } from 'src/app/types/author';
-import { Book } from 'src/app/types/book';
 
 @Component({
   selector: 'app-authors',
@@ -15,7 +13,6 @@ export class AuthorsComponent {
   authors: Author[] = [];
 
   constructor(private authorService: GetAuthorsService, 
-    private getParticularAuthorBooks: GetAuthorBooksService,
     public globalLoader: GlobalLoaderService,
     private router: Router
     ) { }

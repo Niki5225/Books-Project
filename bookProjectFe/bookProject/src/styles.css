@@ -3,3 +3,68 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+#cards {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+#authorCard {
+    width: 11em;
+    height: auto;
+    margin-bottom: 1.5em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: lightblue;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1em;
+}
+
+#authorCard img {
+    width: 9em;
+    height: 9em;
+    object-fit: cover;
+}
+
+#authorCard:hover {
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    scale: 1.1;
+}
+
+
+#book-card {
+    width: 10em;
+    margin-bottom: 1.5em;
+    height: auto;
+    background-color: lightcyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+
+#book-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#book-card:hover {
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    scale: 1.1;
+    ;
+}

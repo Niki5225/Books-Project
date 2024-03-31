@@ -10,7 +10,7 @@ export interface Book {
 interface BookValue {
     nameOfTheBook: string,
     img: string,
-    author: Author,
+    author: string,
     user: User,
 }
   

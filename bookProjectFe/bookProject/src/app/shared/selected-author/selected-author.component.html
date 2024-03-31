@@ -1,1 +1,14 @@
-<p>Path works!</p>
+<!-- <div *ngIf="isLoading">
+    <app-global-loader />
+</div> -->
+
+<!-- Fix the loaderS -->
+
+<div *ngIf="authorBooks.length !== 0" id="cards">
+    <div *ngFor="let book of authorBooks">
+        <div id="book-card">
+            <img src="{{book.data.img}}" alt="{{book.data.nameOfTheBook}}img" />
+            <span>{{book.data.nameOfTheBook}} - {{book.data.author}}</span>
+        </div>
+    </div>
+</div>
