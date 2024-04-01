@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MinCountDirective } from '../min-count.directive';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,12 @@ import { MinCountDirective } from '../min-count.directive';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  constructor(private router: Router){}
+
+  navToRegister(path: string) {
+    this.router.navigate([path]);
+  }
 
   onSubmit(form: NgForm) {
     if (!form){

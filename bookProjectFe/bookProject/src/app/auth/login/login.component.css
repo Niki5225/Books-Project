@@ -1,4 +1,75 @@
+#wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#form {
+   
+    padding: 3em;
+    margin-top: 2em;
+    width: 15em;
+    height: auto;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#input-container {
+    padding: 1.5em;
+}
+
+#input-container label {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#input-container input {
+    border-radius: 0.3em;
+    border: none;
+    height: 1.5em;
+}
+
 #error-message {
     color: red;
     font-weight: bold;
+}
+
+#submitBtn {
+    width: 6em;
+    padding: 1em;
+    background-color: brown;
+    border: none;
+    border-radius: 0.4em;
+    font-weight: bold;
+}
+
+#submitBtn:hover {
+    scale: 1.1;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+#registerLinkContainer {
+    font-size: 0.6em;
+    padding: 1.4em;
+}
+
+#registerLink {
+    text-decoration: underline;
+    color: crimson;
+}
+
+#registerLink:hover {
+    cursor: pointer;
+    color: white;
+    transition: 0.3s ease-in-out;
 }
