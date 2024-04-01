@@ -1,6 +1,6 @@
 <div id="wrapper">
     <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" id="form">
-        <p>Login Form</p>
+        <p id="title">Login Form</p>
         <div class="form-group" id="input-container">
             <label for="username">Username:</label>
             <input type="text" name="username" id="username" ngModel required #usernameInput="ngModel" [appMinCount]="5"/>

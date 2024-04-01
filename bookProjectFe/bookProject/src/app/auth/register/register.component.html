@@ -1,8 +1,10 @@
 <div id="wrapper">
-    <form #loginForm="ngForm" id="form">
+    <form #loginForm="ngForm" id="form" (ngSubmit)="onSubmit(loginForm)">
+        <p id="title">Register form</p>
         <div class="form-group" id="input-container">
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username" ngModel required #usernameInput="ngModel" [appMinCount]="5"/>
+            <input type="text" name="username" id="username" ngModel required #usernameInput="ngModel"
+                [appMinCount]="5" />
             <div *ngIf="usernameInput.touched">
                 <div *ngIf="usernameInput.errors?.['required']" id="error-message">Username is required !</div>
                 <div *ngIf="usernameInput.errors?.['appMinCount']" id="error-message">
@@ -12,7 +14,7 @@
         </div>
         <div class="form-group" id="input-container">
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" ngModel required #emailInput="ngModel" email/>
+            <input type="email" name="email" id="email" ngModel required #emailInput="ngModel" email />
             <div *ngIf="emailInput.touched">
                 <div *ngIf="emailInput.errors?.['required']" id="error-message">Email is required !</div>
                 <div *ngIf="emailInput.errors?.['appMinCount']" id="error-message">
@@ -22,7 +24,7 @@
         </div>
         <div class="form-group" id="input-container">
             <label for="password">Password:</label>
-            <input type="password" name="password" required ngModel #passwordInput="ngModel" [appMinCount]="5"/>
+            <input type="password" name="password" required ngModel #passwordInput="ngModel" [appMinCount]="5" />
             <div *ngIf="passwordInput.touched">
                 <div *ngIf="passwordInput.errors?.['required']" id="error-message">Password is required !</div>
                 <div *ngIf="passwordInput.errors?.['appMinCount']" id="error-message">
@@ -30,5 +32,6 @@
                 </div>
             </div>
         </div>
+        <button id="submitBtn">Register</button>
     </form>
 </div>
