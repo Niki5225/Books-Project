@@ -19,8 +19,7 @@ import {HttpClientModule} from '@angular/common/http'
     AuthModule,
     UserModule,
     HttpClientModule,
-    SharedModule
-    
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

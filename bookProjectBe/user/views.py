@@ -3,11 +3,12 @@ from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
-from django.core.serializers import serialize
+from django.http import HttpResponse
+import json
+
+
 
 UserModel = get_user_model()
-
-
 
 
 @csrf_exempt
@@ -28,18 +29,20 @@ def send_email_func(request):
 
     return render(request, 'index.html')
 
-# @csrf_exempt
-# def login_view(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         password = request.POST.get('password')
-#         user = authenticate(request, username=username, password=password)
-#         if user is not None:
-#             login(request, user)
-#             return JsonResponse({'message': 'Login successful'})
-#         else:
-#             return JsonResponse({'message': 'Invalid credentials'}, status=400)
 
-# def logout_view(request):
-#     logout(request)
-#     return JsonResponse({'message': 'Logout successful'})
+@csrf_exempt
+def user_register(request):
+    if request.method == 'POST':
+        
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        username = body['username']
+        password = body['password']
+        email = body['password']
+    
+        try:
+            UserModel.objects.create(username=username, password=password, email=email)
+            return JsonResponse({"message": 'success'}, status=200, safe=False)
+        except:
+            return JsonResponse({"message": 'Error in registrating user'}, status=400, safe=False)
+    

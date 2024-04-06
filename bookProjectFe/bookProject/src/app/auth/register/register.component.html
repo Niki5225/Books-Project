@@ -1,5 +1,5 @@
 <div id="wrapper">
-    <form #loginForm="ngForm" id="form" (ngSubmit)="onSubmit(loginForm)">
+    <form #registerForm="ngForm" id="form" (ngSubmit)="onSubmit(registerForm)">
         <p id="title">Register form</p>
         <div class="form-group" id="input-container">
             <label for="username">Username:</label>
@@ -17,9 +17,6 @@
             <input type="email" name="email" id="email" ngModel required #emailInput="ngModel" email />
             <div *ngIf="emailInput.touched">
                 <div *ngIf="emailInput.errors?.['required']" id="error-message">Email is required !</div>
-                <div *ngIf="emailInput.errors?.['appMinCount']" id="error-message">
-                    The minimum length of the email is 5 characters
-                </div>
             </div>
         </div>
         <div class="form-group" id="input-container">
@@ -28,7 +25,7 @@
             <div *ngIf="passwordInput.touched">
                 <div *ngIf="passwordInput.errors?.['required']" id="error-message">Password is required !</div>
                 <div *ngIf="passwordInput.errors?.['appMinCount']" id="error-message">
-                    The minimum length of the userna is 5 characters
+                    The minimum length of the password is 5 characters
                 </div>
             </div>
         </div>
