@@ -10,7 +10,7 @@ import { AuthServiceService } from 'src/app/services/auth-services/auth-service.
 })
 export class LoginComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthServiceService) { }
 
 
   navToRegister(path: string) {
@@ -18,23 +18,22 @@ export class LoginComponent {
   }
 
   onSubmit(form: NgForm) {
-    // if (form.invalid) {
-    //   console.log(form.errors);
-    // } else {
-    //   this.logInUser(form.value);
+    if (form.invalid) {
+      console.log(form.errors);
+    } else {
+      this.logInUser(form.value);
     }
+  }
 
-  // logInUser(formData: any) {
-  //   this.authService.logIn(formData['username'], formData['password']).subscribe({
-  //     next: (data) => {
-  //       console.log(data);
-  //     },
-  //     error: (error) => {
-  //       console.log(error);
-  //     }
-  //   }
-  //   );
-  // }
+  logInUser(formData: any) {
+    const data = JSON.stringify(formData.value)
+    this.authService.login(data).subscribe((data) => {
+      console.log('login success', data);
+    },
+    err => console.log(err)
+    
+  )
+  }
 
 }
 

@@ -17,13 +17,20 @@ export class AuthServiceService {
   //      ) as Observable<any>;
   //  }
 
-  registerUser(data: string): Observable<any>{
+  registerUser(data: string): Observable<any> {
     const currentUrl = this.API + 'register/';
 
     return this.http.post(currentUrl, data) as Observable<any>;
   }
 
+  login(data: string) {
+    const currentUrl = this.API + 'api/token/';
+    return this.http.post(this.API, data);
+  }
+
   tokenGetter() {
     return localStorage.getItem('access_token');
   }
+
+
 }

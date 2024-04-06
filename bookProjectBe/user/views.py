@@ -5,6 +5,10 @@ from django.http import JsonResponse
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 import json
+from rest_framework.views import APIView
+from .serializers import UserSerialzer
+from rest_framework.response import Response
+from rest_framework.exceptions import AuthenticationFailed
 
 
 
@@ -28,21 +32,27 @@ def send_email_func(request):
         print('error:', str(e))
 
     return render(request, 'index.html')
-
-
-@csrf_exempt
-def user_register(request):
-    if request.method == 'POST':
+    
+class RegisterView(APIView):
+    def post(self, request):
+        serializer = UserSerialzer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    
+class LoginView(APIView):
+    def post(self, request):
+        password = request.data['password']
+        username = request.data['username']
         
-        body_unicode = request.body.decode('utf-8')
-        body = json.loads(body_unicode)
-        username = body['username']
-        password = body['password']
-        email = body['password']
-    
-        try:
-            UserModel.objects.create(username=username, password=password, email=email)
-            return JsonResponse({"message": 'success'}, status=200, safe=False)
-        except:
-            return JsonResponse({"message": 'Error in registrating user'}, status=400, safe=False)
-    
+        user = UserModel.objects.filter(username=username).get()
+        
+        if user is None:
+            raise AuthenticationFailed("User not found !")
+        
+        if not user.check_password(password):
+            raise AuthenticationFailed("Incorrect password !")
+        
+        return Response({
+            "message": "success",
+        })
