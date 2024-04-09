@@ -18,21 +18,26 @@ export class LoginComponent {
   }
 
   onSubmit(form: NgForm) {
-    if (form.invalid) {
-      console.log(form.errors);
-    } else {
-      this.logInUser(form.value);
+    if (!form) {
+      return;
     }
+
+    if (form.invalid) {
+      alert('Error: Your Form is invalid');
+      form.reset();
+    }
+
+    const data = JSON.stringify(this.getFormData(form));
+
+    this.authService.login(data).subscribe((data) => localStorage.setItem('jwt', data['access']));
+    
+
+
+    form.reset();
   }
 
-  logInUser(formData: any) {
-    const data = JSON.stringify(formData.value)
-    this.authService.login(data).subscribe((data) => {
-      console.log('login success', data);
-    },
-    err => console.log(err)
-    
-  )
+  private getFormData(form: NgForm) {
+    return form.value;
   }
 
 }

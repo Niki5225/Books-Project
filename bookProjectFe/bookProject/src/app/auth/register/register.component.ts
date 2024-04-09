@@ -21,6 +21,10 @@ export class RegisterComponent {
       form.reset();
     }
 
+    const data = JSON.stringify(this.getFormData(form));
+
+    this.authService.registerUser(data).subscribe((data) => console.log(data));
+
 
     form.reset();
   }

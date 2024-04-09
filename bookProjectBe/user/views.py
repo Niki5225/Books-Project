@@ -41,39 +41,36 @@ class RegisterView(APIView):
         serializer.save()
         return Response(serializer.data)
     
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.exceptions import AuthenticationFailed
+import jwt
+import datetime
+from django.conf import settings
+
 class LoginView(APIView):
     def post(self, request):
-        password = request.data['password']
-        username = request.data['username']
-        
-        user = UserModel.objects.filter(username=username).get()
-        
-        if user is None:
-            raise AuthenticationFailed("User not found !")
-        
+        password = request.data.get('password')
+        username = request.data.get('username')
+
+        try:
+            user = UserModel.objects.get(username=username)
+        except UserModel.DoesNotExist:
+            raise AuthenticationFailed("User not found!")
+
         if not user.check_password(password):
-            raise AuthenticationFailed("Incorrect password !")
-        
+            raise AuthenticationFailed("Incorrect password!")
+
         payload = {
             'id': user.id,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
             'iat': datetime.datetime.utcnow(),
         }
-        
-        token = jwt.encode(payload, "secret", algorithm="HS256")
-        
-        response =  Response({
-            "jwt": token,
-        })
-        
-        response = Response()
-        response.set_cookie(key='jwt', value=token, httponly=True)
-        response.data = {
-            "jwt": token,
-            
-        }
-        
-        return response
+
+        token = jwt.encode(payload, settings.SECRET_KEY, algorithm="HS256")
+
+        return Response({'jwt': token})
+
     
 class UserView(APIView):
     def get(self, request):
