@@ -5,6 +5,7 @@ import { Book } from '../types/book';
   providedIn: 'root'
 })
 export class HelperFunctionsService {
+  isLoggedIn = false;
 
   constructor() { }
   public fillTheBooks(bookObj: any): Book[] {

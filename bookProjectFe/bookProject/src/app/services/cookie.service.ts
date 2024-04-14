@@ -4,27 +4,32 @@ import { DOCUMENT } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
-export class CookieService {
+export class CookieService{
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
   // Check if the current user has a JWT token cookie
   hasJwtTokenCookie(): boolean {
-    const cookies = this.parseCookies();
-    return 'jwt' in cookies;
+    const cookies = document.cookie;
+    if (cookies.includes('jwt')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  // Get JWT token cookie value
-  getJwtTokenCookie(): string | undefined {
-    const cookies = this.parseCookies();
-    return cookies['jwt'];
+  setJwtCookie(token: string){
+    this.setCookie('jwt', token, 1);
+    
   }
 
-  // Parse all cookies into an object
-  private parseCookies(): { [name: string]: string } {
-    return this.document.cookie.split(';').reduce((cookies, cookie) => {
-      const [name, value] = cookie.trim().split('=');
-      return { ...cookies, [name]: value };
-    }, {});
+  private setCookie(name: string, value: string, expiryDays: number): void {
+    const expiryDate = new Date();
+    expiryDate.setDate(expiryDate.getDate() + expiryDays);
+
+    const cookieValue = encodeURIComponent(value) + 
+                        ((expiryDays) ? `;expires=${expiryDate.toUTCString()}` : '');
+
+    document.cookie = `${name}=${cookieValue};path=/`;
   }
 }

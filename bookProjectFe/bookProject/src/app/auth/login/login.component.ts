@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-services/auth-service.service';
+import { CookieService } from 'src/app/services/cookie.service';
+import { HelperFunctionsService } from 'src/app/shared/helper-functions.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { AuthServiceService } from 'src/app/services/auth-services/auth-service.
 })
 export class LoginComponent {
 
-  constructor(private router: Router, private authService: AuthServiceService) { }
+  constructor(private router: Router, private authService: AuthServiceService, private cookieService: CookieService) { }
 
 
   navToRegister(path: string) {
@@ -29,8 +31,15 @@ export class LoginComponent {
 
     const data = JSON.stringify(this.getFormData(form));
 
-    this.authService.login(data).subscribe((data) => localStorage.setItem('jwt', data['access']));
+    this.authService.login(data).subscribe((data) => {
+      const jwt = data['access'];
+      this.cookieService.setJwtCookie(jwt);
 
+      // localStorage.setItem('jwt', data['access']);
+      complete: console.log(this.cookieService.hasJwtTokenCookie());
+      
+    });
+      
 
 
     form.reset();

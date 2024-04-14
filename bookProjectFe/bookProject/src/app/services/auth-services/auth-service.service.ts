@@ -35,13 +35,14 @@ export class AuthServiceService {
     ) as Observable<any>;
   }
 
+  
+
   getToken(): string | null {
     return localStorage.getItem(this.TOKEN_KEY);
   }
 
   // Clear JWT token from localStorage
-  clearToken(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
+  clearToken(name: string): void {
+    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+    }
   }
-
-}
